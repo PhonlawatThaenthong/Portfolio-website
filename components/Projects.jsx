@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { projects } from "@/lib/data";
 
 export default function Projects() {
@@ -34,6 +35,20 @@ export default function Projects() {
                 </div>
                 <p className="mt-1 text-accent text-sm font-medium">{p.role}</p>
 
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 text-sm text-indigo-300 hover:text-accent transition-colors"
+                  >
+                    <span>↗</span>
+                    <span className="underline underline-offset-2">
+                      View on GitHub
+                    </span>
+                  </a>
+                )}
+
                 <ul className="mt-4 space-y-2">
                   {p.points.map((pt, j) => (
                     <li
@@ -45,6 +60,55 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
+
+                {p.image && (
+                  <a
+                    href={p.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 block overflow-hidden rounded-lg border border-white/10 bg-white"
+                  >
+                    <Image
+                      src={p.image}
+                      alt={`${p.title} network topology diagram`}
+                      width={1700}
+                      height={1700}
+                      className="w-full h-auto"
+                    />
+                  </a>
+                )}
+
+                {p.video && (
+                  <video
+                    src={p.video}
+                    controls
+                    playsInline
+                    preload="none"
+                    className="mt-4 w-full max-w-[240px] rounded-lg border border-white/10 bg-black"
+                  />
+                )}
+
+                {p.gallery && (
+                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {p.gallery.map((src, k) => (
+                      <a
+                        key={src}
+                        href={src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block overflow-hidden rounded-lg border border-white/10 aspect-[4/3]"
+                      >
+                        <Image
+                          src={src}
+                          alt={`${p.title} photo ${k + 1}`}
+                          width={600}
+                          height={450}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform"
+                        />
+                      </a>
+                    ))}
+                  </div>
+                )}
 
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {p.tags.map((t) => (
