@@ -89,23 +89,30 @@ export default function Projects() {
                 )}
 
                 {p.gallery && (
-                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {p.gallery.map((src, k) => (
-                      <a
-                        key={src}
-                        href={src}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block overflow-hidden rounded-lg border border-white/10 aspect-[4/3]"
+                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {p.gallery.map((item, k) => (
+                      <figure
+                        key={item.src}
+                        className="group/card overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] hover:border-accent/40 transition-colors"
                       >
-                        <Image
-                          src={src}
-                          alt={`${p.title} photo ${k + 1}`}
-                          width={600}
-                          height={450}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform"
-                        />
-                      </a>
+                        <a
+                          href={item.src}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block overflow-hidden aspect-[4/3]"
+                        >
+                          <Image
+                            src={item.src}
+                            alt={item.title}
+                            width={600}
+                            height={450}
+                            className="w-full h-full object-cover group-hover/card:scale-105 transition-transform"
+                          />
+                        </a>
+                        <figcaption className="px-2.5 py-2 text-xs text-slate-300 leading-snug">
+                          {item.title}
+                        </figcaption>
+                      </figure>
                     ))}
                   </div>
                 )}
