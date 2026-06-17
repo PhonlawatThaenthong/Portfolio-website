@@ -35,19 +35,35 @@ export default function Projects() {
                 </div>
                 <p className="mt-1 text-accent text-sm font-medium">{p.role}</p>
 
-                {p.link && (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1.5 text-sm text-indigo-300 hover:text-accent transition-colors"
-                  >
-                    <span>↗</span>
-                    <span className="underline underline-offset-2">
-                      View on GitHub
-                    </span>
-                  </a>
-                )}
+                <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-indigo-300 hover:text-accent transition-colors"
+                    >
+                      <span>↗</span>
+                      <span className="underline underline-offset-2">
+                        View on GitHub
+                      </span>
+                    </a>
+                  )}
+
+                  {p.demo && (
+                    <a
+                      href={p.demo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-indigo-300 hover:text-accent transition-colors"
+                    >
+                      <span>↗</span>
+                      <span className="underline underline-offset-2">
+                        {p.demo.label}
+                      </span>
+                    </a>
+                  )}
+                </div>
 
                 <ul className="mt-4 space-y-2">
                   {p.points.map((pt, j) => (
