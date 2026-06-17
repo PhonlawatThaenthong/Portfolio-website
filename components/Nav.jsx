@@ -14,7 +14,7 @@ export default function Nav() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#0b1020]/70 border-b border-white/5">
-      <nav className="mx-auto max-w-5xl px-6 h-16 flex items-center justify-between">
+      <nav className="mx-auto max-w-5xl px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
         <a href="#intro" className="font-semibold tracking-tight text-white">
           {profile.name.split(" ")[0]}
           <span className="text-accent">.</span>
@@ -45,7 +45,7 @@ export default function Nav() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex items-center justify-center p-2 text-slate-300 hover:text-white"
+          className="md:hidden inline-flex items-center justify-center -mr-1 p-2 text-slate-300 hover:text-white"
         >
           <svg
             width="24"
@@ -75,7 +75,7 @@ export default function Nav() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-white/5 bg-[#0b1020]/95">
-          <div className="mx-auto max-w-5xl px-6 py-4 flex flex-col gap-4 text-sm text-slate-300">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-4 flex flex-col gap-4 text-sm text-slate-300">
             {links.map((l) => (
               <a
                 key={l.href}

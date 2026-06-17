@@ -34,19 +34,19 @@ export default function Intro() {
   return (
     <section
       id="intro"
-      className="relative bg-grid min-h-screen flex items-center pt-24 pb-16"
+      className="relative bg-grid min-h-screen flex items-center pt-20 sm:pt-24 pb-16"
     >
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-5xl px-6 w-full">
-        <div className="grid md:grid-cols-[1.4fr_1fr] gap-12 items-center">
+      <div className="relative mx-auto max-w-5xl px-5 sm:px-6 w-full">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-12 items-center">
           {/* Left: intro */}
           <div className="animate-fade-up">
             <p className="text-accent font-medium mb-3">Hello, I'm</p>
-            <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight">
+            <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.1]">
               {profile.name}
             </h1>
-            <p className="mt-3 text-xl text-slate-400 font-medium">
+            <p className="mt-3 text-lg sm:text-xl text-slate-400 font-medium">
               {profile.title}
             </p>
             <p className="mt-6 text-slate-300 leading-relaxed max-w-xl">
@@ -54,16 +54,16 @@ export default function Intro() {
             </p>
 
             {/* Contact buttons */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-500 transition-colors"
+                className="inline-flex items-center justify-center sm:justify-start gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-500 transition-colors"
               >
                 <MailIcon /> {profile.email}
               </a>
               <a
                 href={`tel:${profile.phone.replace(/-/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/5 transition-colors"
+                className="inline-flex items-center justify-center sm:justify-start gap-2 rounded-lg border border-white/15 px-4 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/5 transition-colors"
               >
                 <PhoneIcon /> {profile.phone}
               </a>
