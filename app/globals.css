@@ -9,6 +9,7 @@ html {
 body {
   background: #0b1020;
   color: #e2e8f0;
+  overflow-x: hidden;
 }
 
 /* Subtle grid background */

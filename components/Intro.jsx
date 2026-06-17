@@ -34,7 +34,7 @@ export default function Intro() {
   return (
     <section
       id="intro"
-      className="relative bg-grid min-h-screen flex items-center pt-20 sm:pt-24 pb-16"
+      className="relative overflow-hidden bg-grid min-h-screen flex items-center pt-20 sm:pt-24 pb-16"
     >
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[140px] pointer-events-none" />
 
