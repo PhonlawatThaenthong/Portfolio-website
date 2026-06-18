@@ -42,6 +42,11 @@ export default function Intro() {
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-12 items-center">
           {/* Left: intro */}
           <div className="animate-fade-up">
+            <img
+              src={profile.photo}
+              alt={profile.name}
+              className="mb-4 h-28 w-28 sm:h-48 sm:w-48 rounded-full object-cover border-2 border-accent/50 shadow-lg"
+            />
             <p className="text-accent font-medium mb-3">Hello, I'm</p>
             <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.1]">
               {profile.name}

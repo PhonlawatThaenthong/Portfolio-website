@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { projects } from "@/lib/data";
+import Lightbox from "./Lightbox";
 
 export default function Projects() {
+  const [active, setActive] = useState(null);
+
   return (
     <section id="projects" className="relative py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -78,11 +84,12 @@ export default function Projects() {
                 </ul>
 
                 {p.image && (
-                  <a
-                    href={p.image}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 block overflow-hidden rounded-lg border border-white/10 bg-white"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setActive({ src: p.image, title: p.title })
+                    }
+                    className="mt-4 block w-full cursor-zoom-in overflow-hidden rounded-lg border border-white/10 bg-white"
                   >
                     <Image
                       src={p.image}
@@ -91,7 +98,7 @@ export default function Projects() {
                       height={1700}
                       className="w-full h-auto"
                     />
-                  </a>
+                  </button>
                 )}
 
                 {p.video && (
@@ -106,16 +113,15 @@ export default function Projects() {
 
                 {p.gallery && (
                   <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {p.gallery.map((item, k) => (
+                    {p.gallery.map((item) => (
                       <figure
                         key={item.src}
                         className="group/card overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] hover:border-accent/40 transition-colors"
                       >
-                        <a
-                          href={item.src}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block overflow-hidden aspect-[4/3]"
+                        <button
+                          type="button"
+                          onClick={() => setActive(item)}
+                          className="block w-full cursor-zoom-in overflow-hidden aspect-[4/3]"
                         >
                           <Image
                             src={item.src}
@@ -124,7 +130,7 @@ export default function Projects() {
                             height={450}
                             className="w-full h-full object-cover group-hover/card:scale-105 transition-transform"
                           />
-                        </a>
+                        </button>
                         <figcaption className="px-2.5 py-2 text-xs text-slate-300 leading-snug">
                           {item.title}
                         </figcaption>
@@ -148,6 +154,8 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      <Lightbox image={active} onClose={() => setActive(null)} />
     </section>
   );
 }

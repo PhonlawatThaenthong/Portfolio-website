@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { activities } from "@/lib/data";
+import Lightbox from "./Lightbox";
 
 export default function Activities() {
+  const [active, setActive] = useState(null);
+
   return (
     <section id="activities" className="relative py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -35,11 +41,10 @@ export default function Activities() {
               )}
 
               {a.image && (
-                <a
-                  href={a.image}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 block overflow-hidden rounded-lg border border-white/10 bg-white"
+                <button
+                  type="button"
+                  onClick={() => setActive({ src: a.image, title: a.title })}
+                  className="mt-4 block w-full cursor-zoom-in overflow-hidden rounded-lg border border-white/10 bg-white"
                 >
                   <Image
                     src={a.image}
@@ -48,7 +53,7 @@ export default function Activities() {
                     height={990}
                     className="w-full h-auto"
                   />
-                </a>
+                </button>
               )}
 
               {a.file && (
@@ -81,6 +86,8 @@ export default function Activities() {
           ))}
         </div>
       </div>
+
+      <Lightbox image={active} onClose={() => setActive(null)} />
     </section>
   );
 }
